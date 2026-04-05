@@ -1,17 +1,14 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:sqflite_common_ffi_web/sqflite_ffi_web.dart';
-import 'package:sqflite/sqflite.dart';
 import 'providers/customer_provider.dart';
 import 'screens/entry/entry_screen.dart';
 import 'screens/query/query_screen.dart';
 import 'screens/profile/profile_screen.dart';
 
-void main() {
-  if (kIsWeb) {
-    databaseFactory = databaseFactoryFfiWeb;
-  }
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
   runApp(const ClothingPointsApp());
 }
 
